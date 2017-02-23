@@ -1,0 +1,66 @@
+@mixin box-shadow($offset-x, $offset-y, $blur, $spread, $color) {
+  -webkit-box-shadow: $offset-x $offset-y $blur $spread $color;
+  -moz-box-shadow: $offset-x $offset-y $blur $spread $color;
+  box-shadow: $offset-x $offset-y $blur $spread $color;
+}
+
+@mixin border-radius($radius) {
+  -webkit-border-radius: $radius;
+  -moz-border-radius: $radius;
+  border-radius: $radius;
+}
+
+@mixin flex() {
+  display: -webkit-box;      /* OLD - iOS 6-, Safari 3.1-6 */
+  display: -moz-box;         /* OLD - Firefox 19- (buggy but mostly works) */
+  display: -ms-flexbox;      /* TWEENER - IE 10 */
+  display: -webkit-flex;     /* NEW - Chrome */
+  display: flex;             /* NEW, Spec - Opera 12.1, Firefox 20+ */
+}
+
+@mixin flex-direction-column() {
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+}
+
+@mixin justify-content($var) {
+  @if $var == "center" {
+    -webkit-box-pack: $var;
+    -ms-flex-pack: $var;
+    justify-content: $var;
+  } @else if $var == "flex-start" {
+    -webkit-box-pack: start;
+    -ms-flex-pack: start;
+    justify-content: flex-start;
+  } @else if $var == "flex-end" {
+    -webkit-box-pack: end;
+    -ms-flex-pack: end;
+    justify-content: flex-end;
+  } @else if $var == "space-between" {
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: $var;
+  } @else {
+    justify-content: $var;
+  }
+}
+
+@mixin align-items($var) {
+  @if $var == "center" or "stretch" {
+    -webkit-box-align: $var;
+    -ms-flex-align: $var;
+    align-items: $var;
+  } @else if $var == "flex-start" {
+    -webkit-box-align: start;
+    -ms-flex-align: start;
+    align-items: flex-start;
+  } @else if $var == "flex-end" {
+    -webkit-box-align: end;
+    -ms-flex-align: end;
+    align-items: flex-end;
+  } @else {
+    align-items: $var;
+  }
+}
